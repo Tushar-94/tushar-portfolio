@@ -10,6 +10,8 @@ import { Expertise } from "@/components/sections/Expertise";
 
 import { Experience } from "@/components/sections/Experience";
 
+import { Toolkit } from "@/components/sections/Toolkit";
+
 export default function Home() {
 
   return (
@@ -29,6 +31,8 @@ export default function Home() {
         <Expertise />
 
         <Experience />
+
+        <Toolkit />
 
       </main>
 
