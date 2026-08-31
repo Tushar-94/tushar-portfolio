@@ -12,6 +12,8 @@ import { Experience } from "@/components/sections/Experience";
 
 import { Toolkit } from "@/components/sections/Toolkit";
 
+import { Writing } from "@/components/sections/Writing";
+
 export default function Home() {
 
   return (
@@ -33,6 +35,8 @@ export default function Home() {
         <Experience />
 
         <Toolkit />
+
+        <Writing />
 
       </main>
 
