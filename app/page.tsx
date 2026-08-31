@@ -6,6 +6,8 @@ import { SelectedProjects } from "@/components/sections/SelectedProjects";
 
 import { Impact } from "@/components/sections/Impact";
 
+import { Experience } from "@/components/sections/Experience";
+
 export default function Home() {
 
   return (
@@ -21,6 +23,8 @@ export default function Home() {
         <SelectedProjects />
 
         <Impact />
+
+        <Experience />
 
       </main>
 
