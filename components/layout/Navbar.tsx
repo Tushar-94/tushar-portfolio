@@ -32,7 +32,7 @@ export function Navbar() {
 
             href="#top"
 
-            className="text-sm font-semibold tracking-[0.14em] text-foreground"
+            className="rounded-sm text-sm font-semibold tracking-[0.14em] text-foreground outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
 
           >
 
@@ -50,7 +50,7 @@ export function Navbar() {
 
                 href={item.href}
 
-                className="text-sm text-muted transition-colors hover:text-foreground"
+                className="rounded-sm text-sm text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
 
               >
 
@@ -64,7 +64,7 @@ export function Navbar() {
 
               href="#contact"
 
-              className="rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-100"
+              className="rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
 
             >
 

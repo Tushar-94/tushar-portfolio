@@ -8,7 +8,7 @@ export function Hero() {
 
       id="top"
 
-      className="flex min-h-[calc(100vh-5rem)] items-center py-20 sm:py-28"
+      className="rounded-full bg-foreground px-6 py-3 text-sm font-medium text-white transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
 
     >
 
@@ -50,8 +50,7 @@ export function Hero() {
 
               href="#projects"
 
-              className="rounded-full bg-foreground px-6 py-3 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
-
+              className="group rounded-sm text-sm font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
             >
 
               Explore my work
