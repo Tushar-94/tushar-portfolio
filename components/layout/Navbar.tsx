@@ -2,17 +2,21 @@
 
 import { useState } from "react";
 
+import Link from "next/link";
+
 import { Container } from "@/components/layout/Container";
+
+import { profile } from "@/data/profile";
 
 const navigation = [
 
-  { label: "About", href: "#about" },
+  { label: "About", href: "/about" },
 
-  { label: "Experience", href: "#experience" },
+  { label: "Experience", href: "/#experience" },
 
-  { label: "Projects", href: "#projects" },
+  { label: "Projects", href: "/projects" },
 
-  { label: "Writing", href: "#writing" },
+  { label: "Writing", href: "/#writing" },
 
 ];
 
@@ -40,9 +44,9 @@ export function Navbar() {
 
         >
 
-          <a
+          <Link
 
-            href="#top"
+            href="/"
 
             onClick={closeMenu}
 
@@ -50,15 +54,15 @@ export function Navbar() {
 
           >
 
-            TUSHAR RAO
+            {profile.name.toUpperCase()}
 
-          </a>
+          </Link>
 
           <div className="hidden items-center gap-8 md:flex">
 
             {navigation.map((item) => (
 
-              <a
+              <Link
 
                 key={item.label}
 
@@ -70,13 +74,13 @@ export function Navbar() {
 
                 {item.label}
 
-              </a>
+              </Link>
 
             ))}
 
-            <a
+            <Link
 
-              href="#contact"
+              href="/#contact"
 
               className="rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background"
 
@@ -84,7 +88,7 @@ export function Navbar() {
 
               Contact
 
-            </a>
+            </Link>
 
           </div>
 
@@ -104,13 +108,7 @@ export function Navbar() {
 
           >
 
-            <span
-
-              aria-hidden="true"
-
-              className="font-mono text-lg leading-none"
-
-            >
+            <span aria-hidden="true" className="font-mono text-lg leading-none">
 
               {isOpen ? "×" : "☰"}
 
@@ -134,7 +132,7 @@ export function Navbar() {
 
               {navigation.map((item) => (
 
-                <a
+                <Link
 
                   key={item.label}
 
@@ -148,13 +146,13 @@ export function Navbar() {
 
                   {item.label}
 
-                </a>
+                </Link>
 
               ))}
 
-              <a
+              <Link
 
-                href="#contact"
+                href="/#contact"
 
                 onClick={closeMenu}
 
@@ -164,7 +162,7 @@ export function Navbar() {
 
                 Contact
 
-              </a>
+              </Link>
 
             </div>
 
