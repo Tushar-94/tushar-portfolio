@@ -136,4 +136,150 @@ export const caseStudies: CaseStudy[] = [
 
   },
 
+  {
+
+    slug: "industrial-vision-anomaly-detection",
+
+    category: "Computer Vision",
+
+    title: "Industrial Vision Anomaly Detection",
+
+    summary:
+
+      "A few-shot industrial visual inspection workflow using DINOv2 anomaly scoring, ROI masking, threshold calibration, and reproducible evaluation.",
+
+    technologies: [
+
+      "DINOv2",
+
+      "PyTorch",
+
+      "OpenCV",
+
+      "Anomaly Detection",
+
+      "ROI Masking",
+
+    ],
+
+    architecture: [
+
+      "Reference images",
+
+      "ROI preprocessing",
+
+      "DINOv2 feature extraction",
+
+      "Feature comparison",
+
+      "Anomaly scoring",
+
+      "Threshold decision",
+
+      "Inspection result",
+
+    ],
+
+    sections: [
+
+      {
+
+        number: "01",
+
+        title: "The problem",
+
+        content:
+
+          "Industrial visual inspection often has many examples of acceptable parts but relatively few labeled defect examples. This makes conventional fully supervised defect detection difficult when the dataset is small, imbalanced, or still evolving.",
+
+      },
+
+      {
+
+        number: "02",
+
+        title: "Project objective",
+
+        content:
+
+          "The objective is to build and evaluate a few-shot anomaly detection workflow that learns a representation of acceptable visual appearance and assigns anomaly scores to new inspection images without requiring a large labeled defect dataset.",
+
+      },
+
+      {
+
+        number: "03",
+
+        title: "Engineering approach",
+
+        content:
+
+          "The workflow uses DINOv2-based visual representations together with a small reference set of good images. New images are compared against this learned reference representation to produce anomaly scores that can be evaluated against known good and defective samples.",
+
+      },
+
+      {
+
+        number: "04",
+
+        title: "ROI masking",
+
+        content:
+
+          "Region-of-interest masking is evaluated as a controlled preprocessing step rather than assumed to improve the model. The goal is to determine whether excluding irrelevant background regions reduces noise in anomaly scores and improves separation between acceptable and defective samples.",
+
+      },
+
+      {
+
+        number: "05",
+
+        title: "Threshold calibration",
+
+        content:
+
+          "A fixed anomaly threshold is only useful when it is supported by measured score distributions. Good and defective samples are therefore scored individually so candidate thresholds can be compared against observed overlap, false positives, and false negatives.",
+
+      },
+
+      {
+
+        number: "06",
+
+        title: "Evaluation",
+
+        content:
+
+          "Evaluation focuses on reproducibility rather than visual intuition. Per-image anomaly scores, reference-set configuration, masking state, model version, thresholds, and dataset assumptions are recorded so experiments can be compared consistently.",
+
+      },
+
+      {
+
+        number: "07",
+
+        title: "Key engineering decision",
+
+        content:
+
+          "A few-shot anomaly detection approach was preferred over immediately relying on supervised object detection because the available labeling conditions favor learning from representative good examples while preserving the option to introduce supervised detection later when sufficient labeled defect data exists.",
+
+      },
+
+      {
+
+        number: "08",
+
+        title: "What this project demonstrates",
+
+        content:
+
+          "The project demonstrates practical computer vision engineering beyond model inference: dataset reasoning, experiment design, preprocessing validation, threshold calibration, reproducibility, and making model decisions under limited industrial data.",
+
+      },
+
+    ],
+
+  },
+
 ];
