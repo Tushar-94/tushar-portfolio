@@ -282,4 +282,152 @@ export const caseStudies: CaseStudy[] = [
 
   },
 
+  {
+
+    slug: "manufacturing-intelligence",
+
+    category: "Machine Learning",
+
+    title: "Manufacturing Intelligence",
+
+    summary:
+
+      "An explainable machine-learning workflow for identifying process drivers, defect patterns, anomaly confidence, and opportunities for manufacturing optimization.",
+
+    technologies: [
+
+      "XGBoost",
+
+      "SHAP",
+
+      "Python",
+
+      "Data Engineering",
+
+      "Explainable AI",
+
+    ],
+
+    architecture: [
+
+      "CSV / Excel process logs",
+
+      "Ingestion and schema normalization",
+
+      "Data validation",
+
+      "Feature preparation",
+
+      "XGBoost models",
+
+      "Anomaly confidence",
+
+      "SHAP explanations",
+
+      "Operational recommendations",
+
+    ],
+
+    sections: [
+
+      {
+
+        number: "01",
+
+        title: "The problem",
+
+        content:
+
+          "Manufacturing teams often collect large amounts of process and defect data but still struggle to identify which parameters are driving quality issues. The challenge is not only predicting defects, but translating heterogeneous plant data into understandable and actionable evidence.",
+
+      },
+
+      {
+
+        number: "02",
+
+        title: "Project objective",
+
+        content:
+
+          "The objective is to build an analytics workflow that can ingest process logs and defect reports, identify likely drivers of quality variation, estimate anomaly confidence, explain model predictions, and support parameter-level recommendations.",
+
+      },
+
+      {
+
+        number: "03",
+
+        title: "Data ingestion",
+
+        content:
+
+          "The ingestion layer is designed around realistic CSV and Excel inputs with inconsistent headers, mixed naming conventions, missing values, duplicates, and varying file structures. Canonical field mapping and schema validation are used to create a reliable representation before modeling begins.",
+
+      },
+
+      {
+
+        number: "04",
+
+        title: "Modeling approach",
+
+        content:
+
+          "Tree-based models such as XGBoost are used as practical baselines for classification and regression because they perform well on structured manufacturing data, support nonlinear interactions, and integrate effectively with explainability tooling.",
+
+      },
+
+      {
+
+        number: "05",
+
+        title: "Explainability",
+
+        content:
+
+          "TreeSHAP is used to explain how individual process parameters contribute to model predictions. This makes the output more useful for engineers because the system can show not only that a process run is risky, but which variables are pushing the prediction in that direction.",
+
+      },
+
+      {
+
+        number: "06",
+
+        title: "Anomaly confidence",
+
+        content:
+
+          "Prediction outputs are complemented with anomaly-oriented signals so unusual process conditions can be distinguished from routine variation. This helps separate normal operating changes from combinations of parameters that may warrant investigation.",
+
+      },
+
+      {
+
+        number: "07",
+
+        title: "Engineering decision",
+
+        content:
+
+          "The system is intentionally built around structured machine learning and explainability before introducing an LLM narrative layer. This keeps the first stage measurable and auditable while allowing language models to be added later for human-readable summaries rather than replacing the core analytical logic.",
+
+      },
+
+      {
+
+        number: "08",
+
+        title: "What this project demonstrates",
+
+        content:
+
+          "The project demonstrates end-to-end applied machine learning across messy industrial data, schema normalization, feature preparation, predictive modeling, explainability, anomaly reasoning, and translating model output into operationally useful insights.",
+
+      },
+
+    ],
+
+  },
+
 ];
