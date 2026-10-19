@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { CaseStudyPage } from "@/components/case-study/CaseStudyPage";
+import { CopilotProjectPage } from "@/components/case-study/copilot/CopilotProjectPage";
 
 import { caseStudies } from "@/data/caseStudies";
 
@@ -74,6 +75,10 @@ export default async function ProjectPage({
 
     notFound();
 
+  }
+
+  if (slug === "industrial-knowledge-copilot") {
+    return <CopilotProjectPage caseStudy={caseStudy} />;
   }
 
   return <CaseStudyPage caseStudy={caseStudy} />;

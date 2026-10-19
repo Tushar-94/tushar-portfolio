@@ -1,6 +1,6 @@
 export const profile = {
 
-    name: "Tushar Rao",
+    name: "Sunkra Tushar Rao",
   
     role: "Applied AI Engineer",
   
@@ -16,12 +16,10 @@ export const profile = {
   
     github: "https://github.com/Tushar-94",
   
-    // Add these once we have the exact public URLs.
+    linkedin: "https://www.linkedin.com/in/tushar-rao-7b5b97184/",
   
-    linkedin: "",
+    email: "sunkra.rao@gmail.com",
   
-    email: "",
-  
-    resume: "",
+    resume: "/Tushar_Rao_Resume.pdf",
   
   };
