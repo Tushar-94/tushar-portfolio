@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { blogPosts } from "@/data/blogPosts";
 import type { Article } from "@/data/articles";
 
 type ArticleCardProps = {
@@ -7,6 +9,8 @@ type ArticleCardProps = {
 };
 
 export function ArticleCard({ article }: ArticleCardProps) {
+
+  const isPublished = blogPosts.some((post) => post.slug === article.slug);
 
   return (
 
@@ -54,7 +58,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
 
         <div className="flex items-start lg:justify-end">
 
-          <a
+          {isPublished ? <Link
 
             href={`/blog/${article.slug}`}
 
@@ -76,7 +80,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
 
             </span>
 
-          </a>
+          </Link> : <span className="font-mono text-xs text-muted">Coming soon</span>}
 
         </div>
 

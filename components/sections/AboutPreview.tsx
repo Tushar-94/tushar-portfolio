@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Container } from "@/components/layout/Container";
 
 export function AboutPreview() {
@@ -50,7 +52,7 @@ export function AboutPreview() {
 
             <div className="mt-8">
 
-              <a
+            <Link
 
                 href="/about"
 
@@ -60,7 +62,7 @@ export function AboutPreview() {
 
                 More about me →
 
-              </a>
+                </Link>
 
             </div>
 

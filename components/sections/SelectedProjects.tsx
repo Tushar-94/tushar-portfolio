@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Container } from "@/components/layout/Container";
 
 import { ProjectCard } from "@/components/ui/ProjectCard";
@@ -56,7 +58,7 @@ export function SelectedProjects() {
 
         <div className="border-t border-border pt-8">
 
-          <a
+        <Link
 
             href="/projects"
 
@@ -66,7 +68,7 @@ export function SelectedProjects() {
 
             View all projects →
 
-          </a>
+            </Link>
 
         </div>
 

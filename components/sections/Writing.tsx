@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Container } from "@/components/layout/Container";
 
 import { ArticleCard } from "@/components/ui/ArticleCard";
@@ -48,9 +50,9 @@ export function Writing() {
 
         <div className="border-t border-border pt-8">
 
-          <a
+        <Link
 
-            href="/blog"
+            href="/writing"
 
             className="text-sm font-medium text-foreground"
 
@@ -58,7 +60,7 @@ export function Writing() {
 
             View all writing →
 
-          </a>
+            </Link>
 
         </div>
 

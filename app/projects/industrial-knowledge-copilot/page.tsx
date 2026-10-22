@@ -1,23 +1,14 @@
-import { notFound } from "next/navigation";
+import { CopilotProjectPage } from "@/components/case-study/copilot/CopilotProjectPage";
+import { ProjectStructuredData } from "@/components/seo/PageStructuredData";
+import { getProject } from "@/lib/route-data";
+import { projectMetadata } from "@/lib/seo/metadata";
 
-import { CaseStudyPage } from "@/components/case-study/CaseStudyPage";
+const project = getProject("industrial-knowledge-copilot");
+export const metadata = projectMetadata(project);
 
-import { caseStudies } from "@/data/caseStudies";
-
-export default function IndustrialKnowledgeCopilotPage() {
-
-  const caseStudy = caseStudies.find(
-
-    (item) => item.slug === "industrial-knowledge-copilot",
-
-  );
-
-  if (!caseStudy) {
-
-    notFound();
-
-  }
-
-  return <CaseStudyPage caseStudy={caseStudy} />;
-
+export default function ProjectPage() {
+  return <>
+    <CopilotProjectPage caseStudy={project} />
+    <ProjectStructuredData project={project} />
+  </>;
 }

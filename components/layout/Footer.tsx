@@ -1,5 +1,7 @@
 import { Container } from "@/components/layout/Container";
 
+import { profile } from "@/data/profile";
+
 export function Footer() {
 
   return (
@@ -10,13 +12,29 @@ export function Footer() {
 
         <div className="flex flex-col gap-4 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
 
-          <p>© 2026 Tushar Rao</p>
+          <p>© 2026 {profile.name}</p>
 
-          <p>
+          <div className="flex flex-wrap items-center gap-5">
 
-            Built with Next.js, TypeScript, and Tailwind CSS.
+            <a
 
-          </p>
+              href={profile.github}
+
+              target="_blank"
+
+              rel="noreferrer"
+
+              className="transition-colors hover:text-foreground"
+
+            >
+
+              GitHub ↗
+
+            </a>
+
+            <span>Built with Next.js, TypeScript, and Tailwind CSS.</span>
+
+          </div>
 
         </div>
 

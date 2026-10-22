@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
+import { rootMetadata } from "@/lib/seo/metadata";
+import { identitySchema } from "@/lib/seo/structured-data";
+import { JsonLd } from "@/components/seo/JsonLd";
 
 const geistSans = Geist({
 
@@ -20,21 +23,7 @@ const geistMono = Geist_Mono({
 
 });
 
-export const metadata: Metadata = {
-
-  title: {
-
-    default: "Tushar Rao | Applied AI Engineer",
-
-    template: "%s | Tushar Rao",
-
-  },
-
-  description:
-
-    "Applied AI Engineer building production systems across Generative AI, Machine Learning, and Computer Vision.",
-
-};
+export const metadata: Metadata = rootMetadata;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
 
@@ -48,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
     >
 
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">{children}<JsonLd data={identitySchema()} /></body>
 
     </html>
 

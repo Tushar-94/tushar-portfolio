@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Project } from "@/data/projects";
 
 import { Tag } from "@/components/ui/Tag";
@@ -8,6 +9,8 @@ type ProjectCardProps = {
 
   index: number;
 
+  headingLevel?: 2 | 3;
+
 };
 
 export function ProjectCard({
@@ -16,7 +19,11 @@ export function ProjectCard({
 
   index,
 
+  headingLevel = 3,
+
 }: ProjectCardProps) {
+
+  const Heading = headingLevel === 2 ? "h2" : "h3";
 
   return (
 
@@ -42,11 +49,11 @@ export function ProjectCard({
 
           </p>
 
-          <h3 className="text-2xl font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
+          <Heading className="text-2xl font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
 
             {project.title}
 
-          </h3>
+          </Heading>
 
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted sm:text-lg">
 
@@ -68,15 +75,15 @@ export function ProjectCard({
 
         <div className="flex items-start lg:justify-end">
 
-          <a
+          <Link
 
             href={`/projects/${project.slug}`}
 
-            className="text-sm font-medium text-foreground"
+            className="inline-flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-muted"
 
           >
 
-            View case study{" "}
+            View project{" "}
 
             <span
 
@@ -90,7 +97,7 @@ export function ProjectCard({
 
             </span>
 
-          </a>
+          </Link>
 
         </div>
 

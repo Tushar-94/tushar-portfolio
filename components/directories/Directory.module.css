@@ -1,0 +1,55 @@
+.directory { color: var(--foreground); padding-bottom: 72px; }
+.directory :where(h1,h2,h3,p,figure,ul,ol) { margin: 0; }
+.directory :where(a,button):focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+.skipLink { position: fixed; z-index: 100; top: 12px; left: 24px; padding: 14px 20px; background: #111; color: #fff; transform: translateY(-160%); }
+.skipLink:focus { transform: none; }
+.hero { padding: 62px 0 44px; }
+.eyebrow { display: flex; align-items: center; gap: 12px; color: #666; text-transform: uppercase; letter-spacing: .13em; font: 10px/1.7 var(--font-geist-mono), monospace; }
+.eyebrow::before { content: ""; width: 7px; height: 7px; background: currentColor; }
+.heroTop { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+.edition { color: #666; text-align: right; font: 10px/1.6 var(--font-geist-mono), monospace; }
+.heroBody { display: grid; grid-template-columns: minmax(0,1fr) 230px; gap: 36px; align-items: end; margin-top: 29px; }
+.heroTitle { max-width: 900px; font-size: clamp(44px,6.2vw,82px); line-height: 1.06; letter-spacing: -.065em; font-weight: 500; text-wrap: balance; }
+.heroTitle span { color: #777; }
+.heroAside { border-left: 1px solid #d4d4d4; padding: 7px 0 7px 24px; color: #666; font-size: 13px; line-height: 1.8; }
+.heroAside strong { display: block; color: #222; margin-bottom: 6px; font-size: 12px; font-weight: 500; }
+.heroCopy { max-width: 590px; color: #666; font-size: 15px; line-height: 1.8; margin-top: 24px !important; }
+.filterBar { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 18px 0; border-top: 1px solid #ccc; border-bottom: 1px solid #ddd; margin-bottom: 28px; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.filters button { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 44px; border: 1px solid transparent; border-radius: 3px; padding: 9px 14px; background: transparent; color: #606060; font-size: 12px; cursor: pointer; transition: color .2s, background .2s; }
+.filters button span { font: 9px var(--font-geist-mono), monospace; opacity: .65; }
+.filters button:hover { background: #eaeaea; color: #111; }
+.filters button[aria-pressed="true"] { background: #222; color: #fff; }
+.filters button:focus-visible { outline-color: #111; outline-offset: 2px; }
+.resultCount { flex-shrink: 0; color: #666; font: 10px/1.6 var(--font-geist-mono), monospace; }
+.resultCount span { margin-left: 9px; }
+.collectionItem { min-width: 0; display: contents; }
+.collectionItem[hidden] { display: none; }
+.endnote { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid #ccc; padding-top: 24px; margin-top: 36px; color: #666; font-size: 12px; line-height: 1.8; }
+.endnote a { display: inline-flex; align-items: center; gap: 14px; color: #222; min-height: 44px; }
+.endnote a:hover svg { transform: translateX(3px); }
+.endnote svg { transition: transform .2s; }
+@media (min-width: 1700px) { .heroTitle { font-size: 84px; } }
+@media (max-width: 1023px) {
+  .heroBody { grid-template-columns: minmax(0,1fr) 180px; gap: 24px; }
+  .heroAside { padding-left: 18px; font-size: 12px; }
+  .resultCount span { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+@media (max-width: 767px) {
+  .hero { padding-top: 40px; padding-bottom: 30px; }
+  .heroBody { grid-template-columns: 1fr; gap: 22px; margin-top: 25px; }
+  .heroTitle { font-size: clamp(43px,8vw,61px); }
+  .heroAside { display: none; }
+  .heroCopy { font-size: 14px; margin-top: 18px !important; }
+  .edition { font-size: 9px; }
+  .eyebrow { font-size: 9px; gap: 8px; }
+  .filterBar { align-items: flex-start; gap: 12px; margin-bottom: 20px; }
+  .filters { gap: 4px; }
+  .filters button { padding: 9px 10px; gap: 8px; font-size: 11px; }
+  .resultCount { padding-top: 14px; font-size: 9px; }
+  .endnote { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .directory { padding-bottom: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .directory *, .directory *::before, .directory *::after { transition: none !important; animation: none !important; }
+}
