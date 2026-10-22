@@ -5,6 +5,8 @@ export type ExperienceItem = {
     role: string;
   
     company: string;
+
+    location?: string;
   
     summary: string;
   
@@ -32,6 +34,22 @@ export type ExperienceItem = {
   
     {
   
+      period: "2023 — 2025",
+
+      role: "Research Assistant",
+
+      company: "Otto von Guericke University Magdeburg",
+
+      summary:
+
+        "Academic research at the intersection of data science, machine learning, and software engineering.",
+
+      focus: ["Research", "Data Science", "Machine Learning", "Software Engineering"],
+
+    },
+
+    {
+
       period: "2018 — 2019",
   
       role: "Data Scientist",

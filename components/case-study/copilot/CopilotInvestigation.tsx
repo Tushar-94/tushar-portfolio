@@ -1,61 +1,47 @@
 "use client";
 
 import { useId, useState } from "react";
-import { investigationSteps } from "@/data/copilot";
+import { syntheticEvidence } from "@/data/copilot";
+import styles from "./CopilotInvestigation.module.css";
 
 export function CopilotInvestigation() {
-  const [selectedStep, setSelectedStep] = useState(0);
+  const [selected, setSelected] = useState(0);
   const id = useId();
-  const step = investigationSteps[selectedStep];
+  const evidence = syntheticEvidence[selected];
 
-  return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-surface">
-      <header className="border-b border-border p-5">
-        <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-muted">Illustrative example · Intended workflow</p>
-        <h3 className="mt-3 text-lg font-medium leading-7 tracking-tight">What should an engineer check when an industrial pump reports a high-vibration alarm?</h3>
-        <p className="mt-2 text-xs leading-5 text-muted">A product walkthrough, not a historical agent execution or a live query.</p>
-      </header>
-
-      <div className="p-5">
-        <ol aria-label="Investigation steps" className="grid grid-cols-2 gap-2 sm:grid-cols-5">
-          {investigationSteps.map((item, index) => (
-            <li key={item.label}>
-              <button type="button" aria-pressed={selectedStep === index} aria-controls={`${id}-step`}
-                onClick={() => setSelectedStep(index)}
-                className={`flex min-h-11 w-full items-center justify-center gap-2 rounded-lg border px-2 py-2 text-xs transition-colors ${selectedStep === index ? "border-foreground bg-foreground text-background" : "border-border bg-surface text-foreground hover:bg-background"}`}>
-                <span className="font-mono text-[10px]">{String(index + 1).padStart(2, "0")}</span>{item.label}
-              </button>
-            </li>
-          ))}
-        </ol>
-
-        <div id={`${id}-step`} aria-live="polite" aria-atomic="true" className="mt-5 min-h-28">
-          <h4 className="text-sm font-semibold">{step.title}</h4>
-          <p className="mt-2 text-sm leading-6 text-muted">{step.description}</p>
-        </div>
-
-        <div className="grid gap-5 border-t border-border pt-5 sm:grid-cols-2">
-          <section aria-label="Illustrative evidence panel" className="rounded-xl bg-background p-4">
-            <h4 className="font-mono text-xs text-muted">Evidence · Placeholders</h4>
-            {selectedStep >= 3 ? (
-              <ul className="mt-3 space-y-2 text-sm leading-6">
-                <li>Alarm guidance — source placeholder</li>
-                <li>Maintenance procedure — source placeholder</li>
-              </ul>
-            ) : <p className="mt-3 text-sm leading-6 text-muted">Select “Evidence” to preview the intended evidence presentation.</p>}
-            <p className="mt-3 text-xs leading-5 text-muted">No actual documents, excerpts, or citations are shown.</p>
-          </section>
-          <section aria-label="Illustrative response panel" className="p-1">
-            <h4 className="font-mono text-xs text-muted">Illustrative response · Target capability</h4>
-            <p className="mt-3 text-sm leading-6 text-muted">
-              {selectedStep === 4
-                ? "Confirm the equipment identity and operating context. Review applicable alarm guidance and maintenance checks before recommending an action."
-                : "A recommendation follows evidence selection. Select “Recommend” to preview illustrative response text."}
-            </p>
-            <p className="mt-3 text-xs leading-5 text-muted">Illustrative text only; not a completed model output or verified maintenance instruction.</p>
-          </section>
+  return <section className={styles.walkthrough} aria-labelledby={`${id}-question`}>
+    <header className={styles.header}>
+      <p className={styles.eyebrow}>Synthetic investigation / Illustrative walkthrough</p>
+      <h3 id={`${id}-question`}>Find the documented response to HX-417 on an MX-200.</h3>
+    </header>
+    <dl className={styles.decision} aria-label="Retrieval decision for this example">
+      <div><dt>Identifier</dt><dd>HX-417</dd></div>
+      <div><dt>Equipment</dt><dd>MX-200</dd></div>
+      <div><dt>Strategy</dt><dd>Dense + BM25</dd></div>
+    </dl>
+    <div className={styles.sources}>
+      <div className={styles.sourceIndex}>
+        <div className={styles.indexHeading}><span>Source evidence</span><span>Illustrative order</span></div>
+        <div role="group" aria-label="Inspect synthetic evidence" className={styles.sourceList}>
+          {syntheticEvidence.map((source, index) => <button key={source.documentId} type="button" className={styles.sourceButton} aria-pressed={selected === index} aria-controls={`${id}-source`} aria-label={`Inspect source ${index + 1}: ${source.title}`} onClick={() => setSelected(index)}>
+            <span className={styles.rank}>0{index + 1}</span><span className={styles.sourceTitle}>{source.title}<span className={styles.sourceId}>{source.documentId}</span></span><span className={styles.sourceArrow} aria-hidden="true">→</span>
+          </button>)}
         </div>
       </div>
+      <section id={`${id}-source`} className={styles.detail} aria-label="Selected source details" aria-live="polite" aria-atomic="true">
+        <p className={styles.eyebrow}>{evidence.type} / Relevant section</p>
+        <h4>{evidence.section}</h4>
+        <p className={styles.context}>{evidence.context}</p>
+        <dl className={styles.metadata}>
+          <div><dt>Equipment / identifier metadata</dt><dd>{evidence.metadata}</dd></div>
+          <div><dt>Source file</dt><dd>{evidence.source}</dd></div>
+        </dl>
+        <div className={styles.sourceActions}>
+          <a className={styles.sourceLink} href={`https://github.com/Tushar-94/industrial-knowledge-copilot/blob/main/data/generated/markdown/${evidence.source}`} target="_blank" rel="noopener noreferrer">Open synthetic source <span aria-hidden="true">↗</span><span className="sr-only">: {evidence.documentId} (opens in a new tab)</span></a>
+          <button className={styles.related} type="button" aria-controls={`${id}-source`} onClick={() => setSelected(selected === 0 ? 1 : 0)}>{selected === 0 ? "Follow related procedure: SOP-MNT-001 →" : "← Return to alarm reference: HX-417"}</button>
+        </div>
+      </section>
     </div>
-  );
+    <p className={styles.footnote}>Verified synthetic source documents. Display order is illustrative; no retrieval is executed, no scores are claimed, and no LLM answer is generated.</p>
+  </section>;
 }

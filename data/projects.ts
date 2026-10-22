@@ -1,3 +1,8 @@
+import { forecasting } from "./forecasting";
+import { defectSegmentation } from "./defectSegmentation";
+import { anomalyDetection } from "./anomalyDetection";
+import { visionseg } from "./visionseg";
+
 export type Project = {
   slug: string;
   title: string;
@@ -33,30 +38,8 @@ export const projects: Project[] = [
     ],
     category: "Generative AI",
   },
-  {
-    slug: "industrial-vision-anomaly-detection",
-    title: "Industrial Vision Anomaly Detection",
-    description: "Few-shot visual inspection workflows using DINOv2, anomaly scoring, ROI masking, and reproducible threshold evaluation.",
-    technologies: [
-      "DINOv2",
-      "PyTorch",
-      "OpenCV",
-      "Anomaly Detection",
-      "Computer Vision",
-    ],
-    category: "Computer Vision",
-  },
-  {
-    slug: "manufacturing-intelligence",
-    title: "Manufacturing Intelligence",
-    description: "Explainable machine-learning workflows for identifying process drivers, defect patterns, and opportunities for manufacturing optimization.",
-    technologies: [
-      "XGBoost",
-      "SHAP",
-      "Python",
-      "Data Engineering",
-      "Explainable AI",
-    ],
-    category: "Machine Learning",
-  },
+  defectSegmentation,
+  anomalyDetection,
+  visionseg,
+  forecasting,
 ];

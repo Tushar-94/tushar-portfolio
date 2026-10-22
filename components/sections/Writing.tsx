@@ -52,7 +52,7 @@ export function Writing() {
 
         <Link
 
-            href="/blog"
+            href="/writing"
 
             className="text-sm font-medium text-foreground"
 

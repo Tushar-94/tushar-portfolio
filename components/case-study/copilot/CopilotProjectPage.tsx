@@ -4,7 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Tag } from "@/components/ui/Tag";
 import { CaseStudySection } from "../CaseStudySection";
-import { ProjectMetrics } from "../ProjectMetrics";
+import { CopilotPerformance } from "./CopilotPerformance";
 import { capabilities, copilot, experiments, principles, technologyGroups } from "@/data/copilot";
 import type { CaseStudy } from "@/types/case-study";
 import { CopilotArchitecture } from "./CopilotArchitecture";
@@ -87,24 +87,12 @@ export function CopilotProjectPage({ caseStudy }: { caseStudy: CaseStudy }) {
             </CaseStudySection>
 
             <CaseStudySection number="05" title="Retrieval Performance">
-              <p className="mb-6 font-mono text-xs text-muted">Hybrid Retrieval V2 · Development benchmark</p>
-              <ProjectMetrics metrics={[
-                { value: "100%", label: "Hit@5" },
-                { value: "84%", label: "Hit@1" },
-                { value: "0.891", label: "Mean Reciprocal Rank" },
-              ]} />
-              <dl className="mt-7 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-border pt-5">
-                <dt className="order-2 text-sm text-muted">Automated tests passing at the Hybrid Retrieval V2 checkpoint</dt>
-                <dd className="order-1 font-mono text-2xl font-medium">90</dd>
-              </dl>
-              <aside aria-label="Benchmark methodology" className="mt-6 rounded-xl border border-border bg-surface p-4 text-xs leading-6 text-muted">
-                <p><strong className="font-medium text-foreground">25 development queries · 154 synthetic industrial chunks.</strong> These results do not establish production reliability, real-world deployment performance, or generalization to unseen documents.</p>
-                <p className="mt-2">The earlier 12-query benchmark became diagnostic after its failures were inspected. These are retrieval metrics, not final-answer quality or agent success rates.</p>
-              </aside>
+              <CopilotPerformance />
+              <p className="mt-5 font-mono text-[11px] leading-6 text-muted">154 synthetic chunks · 90 automated tests passing at the local V2 checkpoint</p>
             </CaseStudySection>
 
-            <CaseStudySection number="06" title="Engineered Through Experiments, Not Assumptions">
-              <div className="grid gap-4 md:grid-cols-3">
+            <CaseStudySection number="06" title="Engineered Through Evaluation">
+              <div className="grid gap-4 sm:grid-cols-2">
                 {experiments.map((experiment) => (
                   <section key={experiment.title} className="flex min-w-0 flex-col rounded-xl border border-border bg-surface p-5">
                     <h3 className="text-base font-semibold tracking-tight">{experiment.title}</h3>

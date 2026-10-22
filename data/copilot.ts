@@ -37,6 +37,11 @@ export const experiments = [
     finding: "Dense retrieval enforced metadata constraints; BM25 initially searched the full corpus.",
     change: "Introduced shared candidate eligibility across retrieval branches.",
   },
+  {
+    title: "Evaluation-Driven Iteration",
+    finding: "Inspecting held-out failures makes that set part of the development process.",
+    change: "Relabel the reused 12-query suite as diagnostic and keep evaluation checkpoints separate.",
+  },
 ];
 
 export const technologyGroups = [
@@ -54,10 +59,32 @@ export const technologyGroups = [
   ] },
 ];
 
+// V1 is the published README / Retrieval Experiments V1 checkpoint. V2 comes
+// from the local Hybrid Retrieval V2 report, sections 40–41; its reused
+// 12-query set is diagnostic, not an independent held-out estimate.
+export const retrievalBenchmarks = [
+  { label: "Published V1", source: "README · Retrieval Experiments V1", comparison: "Held-out", diagnostic: false, metrics: [
+    { name: "Hit@1", development: 0.800, comparison: 0.750 },
+    { name: "Hit@3", development: 0.960, comparison: 0.750 },
+    { name: "Hit@5", development: 1.000, comparison: 0.833 },
+    { name: "MRR", development: 0.883, comparison: 0.771 },
+  ] },
+  { label: "Local V2", source: "Hybrid Retrieval V2 engineering report · §§40–41", comparison: "Diagnostic", diagnostic: true, metrics: [
+    { name: "Hit@1", development: 0.840, comparison: 1.000 },
+    { name: "Hit@3", development: 0.920, comparison: 1.000 },
+    { name: "Hit@5", development: 1.000, comparison: 1.000 },
+    { name: "MRR", development: 0.891, comparison: 1.000 },
+  ] },
+];
+
 export const investigationSteps = [
-  { label: "Interpret", title: "Interpret the technical question", description: "Identify the equipment, alarm, and requested maintenance context. Confirm missing equipment details rather than assuming them." },
-  { label: "Retrieve", title: "Retrieve relevant documentation", description: "Route the query through dense search and conditional BM25 to find candidate alarm guidance and maintenance procedures." },
-  { label: "Constrain", title: "Apply equipment and metadata constraints", description: "Use the same eligibility rules across retrieval branches. Exclude candidates that do not match the equipment context." },
-  { label: "Evidence", title: "Present supporting evidence", description: "Surface eligible excerpts before constructing a recommendation. The source labels below are placeholders, not retrieved documents." },
-  { label: "Recommend", title: "Generate a grounded recommendation", description: "Target capability: construct LLM context from the selected evidence and attribute the answer to its sources." },
+  { label: "Question", title: "Identify the information need", description: "Find the documented response to hydraulic-pressure alarm HX-417 on an MX-200. Both identifiers exist in the synthetic corpus." },
+  { label: "Retrieval Strategy", title: "Route an identifier-heavy question", description: "Combine dense retrieval and BM25, fuse candidates, and boost exact identifier matches. The V2 implementation applies shared metadata eligibility constraints." },
+  { label: "Ranked Evidence", title: "Inspect relevant source sections", description: "Review the alarm reference and its related hydraulic inspection procedure. The cards below use real synthetic documents; their display order is illustrative, not an executed retrieval ranking." },
+  { label: "Source Traceability", title: "Trace evidence back to its source", description: "Document IDs, section titles, machine-model metadata, and procedure references connect each evidence card to its synthetic source. LLM answer generation remains planned." },
+];
+
+export const syntheticEvidence = [
+  { title: "MX-200 Troubleshooting Guide", type: "Troubleshooting guide", section: "HX-417 · Diagnostic Checks", metadata: "MX-200 · HX-417", documentId: "TSG-MX200-001", source: "TSG-MX200-001.md", context: "Lists hydraulic-pressure diagnostic checks and references SOP-MNT-001." },
+  { title: "Hydraulic System Inspection", type: "Maintenance procedure", section: "7. Procedure", metadata: "MX-200 / MX-220 / MX-300 · SOP-MNT-001", documentId: "SOP-MNT-001", source: "SOP-MNT-001.md", context: "Documents the synthetic inspection sequence and recording of findings." },
 ];
